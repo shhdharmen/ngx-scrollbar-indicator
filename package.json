@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build_lib": "ng build ngx-scrollbar-indicator",
+    "copy_assets": "node assets-copy.js",
+    "npm_pack": "cd dist/ngx-scrollbar-indicator && npm pack",
+    "package": "npm run build_lib && npm run copy_assets && npm run npm_pack"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "core-js": "^2.5.4",
+    "ncp": "^2.0.0",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },
