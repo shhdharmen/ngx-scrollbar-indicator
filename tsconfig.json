@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-scrollbar-indicator": [
+        "dist/ngx-scrollbar-indicator"
+      ],
+      "ngx-scrollbar-indicator/*": [
+        "dist/ngx-scrollbar-indicator/*"
+      ]
+    }
   }
 }
