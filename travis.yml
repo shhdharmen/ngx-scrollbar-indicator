@@ -17,7 +17,7 @@ install:
 
 script:
   - yarn lint
-  - yarn build --base-href https://[ your github username ].github.io/my-awesome-project/
+  - yarn build --base-href https://shhdharmen.github.io/ngx-scrollbar-indicator/
 deploy:
   provider: pages
   skip_cleanup: true
