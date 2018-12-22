@@ -13,11 +13,11 @@ cache:
     - node_modules
 
 install:
-  - npm install -g yarn
+  - npm install
 
 script:
-  - yarn lint
-  - yarn build --base-href https://shhdharmen.github.io/ngx-scrollbar-indicator/
+  - npm lint
+  - npm build --base-href https://shhdharmen.github.io/ngx-scrollbar-indicator/
 deploy:
   provider: pages
   skip_cleanup: true
