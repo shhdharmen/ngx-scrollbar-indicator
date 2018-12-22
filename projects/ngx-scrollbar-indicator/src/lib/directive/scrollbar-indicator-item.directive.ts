@@ -1,10 +1,10 @@
 import { Directive, Input, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[ngxScrollbarIndicatorItem]'
+  selector: '[indicatorItem]'
 })
 export class ScrollbarIndicatorItemDirective {
-  @Input('ngxScrollbarIndicatorItem') itemName: string;
+  @Input('indicatorItem') itemName: string;
   constructor(private ele: ElementRef) { }
 
   get character() {
