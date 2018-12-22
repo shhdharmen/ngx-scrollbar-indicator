@@ -12,12 +12,9 @@ cache:
   directories:
     - node_modules
 
-install:
-  - npm install
-
 script:
-  - npm lint
-  - npm build --base-href https://shhdharmen.github.io/ngx-scrollbar-indicator/
+  - npm run lint
+  - npm run build --base-href https://shhdharmen.github.io/ngx-scrollbar-indicator/
 deploy:
   provider: pages
   skip_cleanup: true
