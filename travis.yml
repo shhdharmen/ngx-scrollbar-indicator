@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - "8.12.0"
+dist: trusty
+sudo: false
+
+branches:
+  only:
+  - master
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install -g yarn
+
+script:
+  - yarn lint
+  - yarn build --base-href https://[ your github username ].github.io/my-awesome-project/
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: 281cd907d438fe2314ccd23161d954601c355c41
+  local_dir: ngx-scrollbar-indicator
+  on:
+    branch: master
