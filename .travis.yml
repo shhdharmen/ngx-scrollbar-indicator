@@ -14,7 +14,7 @@ before_script:
 script:
   - ng lint
   - npm run build_lib
-  - ng build --prod --base-href https://shhdharmen.githib.io/ngx-scrollbar-indicator
+  - ng build --prod --base-href https://shhdharmen.githib.io/ngx-scrollbar-indicator-app
 deploy:
   provider: pages
   skip_cleanup: true
