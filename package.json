@@ -1,6 +1,6 @@
 {
   "name": "ngx-scrollbar-indicator-app",
-  "version": "0.1.1",
+  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
