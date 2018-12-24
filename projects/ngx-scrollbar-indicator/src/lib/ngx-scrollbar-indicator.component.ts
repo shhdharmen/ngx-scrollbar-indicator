@@ -160,7 +160,6 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
         (firstItem.offsetHeight + firstItem.offsetTop) < (viewScrollTop + viewOffsetHeight)) ||
         (viewScrollTop <= lastItem.offsetTop &&
           (lastItem.offsetHeight + lastItem.offsetTop) < (viewScrollTop + viewOffsetHeight));
-      console.log(condition);
       if (condition) {
         this._currentCharacterObserver.next(key);
         return condition;
