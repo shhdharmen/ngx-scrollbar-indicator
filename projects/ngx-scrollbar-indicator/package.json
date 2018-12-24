@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "This is an Angular Library. This will show an indicator with scrollbar. Read more in README.",
   "keywords": ["angular", "library", "scrollbar", "indicator"],
-  "license" : "SEE LICENSE IN LICENSE",
+  "license" : "MIT",
   "repository": {
     "type" : "git",
     "url" : "https://github.com/shhdharmen/ngx-scrollbar-indicator"
