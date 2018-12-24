@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "8.12.0"
 dist: trusty
-sudo: false
+sudo: required
 
 branches:
   only:
@@ -14,7 +14,7 @@ cache:
 
 script:
   - npm run lint
-  - npm run build --prod --base-href https://shhdharmen.github.io/ngx-scrollbar-indicator-app
+  - npm run build --prod --base-href /
 deploy:
   provider: pages
   skip_cleanup: true
