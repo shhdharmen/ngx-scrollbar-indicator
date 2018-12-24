@@ -18,7 +18,7 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: 281cd907d438fe2314ccd23161d954601c355c41
+  github_token: $GITHUB_TOKEN
   local_dir: ngx-scrollbar-indicator
   on:
     branch: master
