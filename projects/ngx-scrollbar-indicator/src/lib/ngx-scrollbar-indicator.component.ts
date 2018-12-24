@@ -264,6 +264,16 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
     const callbacks = [];
     let running = false;
 
+    // run the actual callbacks
+    const runCallbacks = () => {
+
+      callbacks.forEach((callback) => {
+        callback();
+      });
+
+      running = false;
+    };
+
     // fired on event
     const executeEvent = () => {
 
@@ -279,15 +289,6 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
 
     };
 
-    // run the actual callbacks
-    const runCallbacks = () => {
-
-      callbacks.forEach((callback) => {
-        callback();
-      });
-
-      running = false;
-    };
 
     // adds callback to loop
     const addCallback = (callback: any) => {
