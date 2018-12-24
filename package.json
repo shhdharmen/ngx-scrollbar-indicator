@@ -1,6 +1,7 @@
 {
   "name": "ngx-scrollbar-indicator-app",
-  "version": "0.0.0",
+  "version": "0.1.1",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +12,7 @@
     "copy-assets": "node assets-copy.js",
     "copy-license": "copy .\\LICENSE .\\dist\\ngx-scrollbar-indicator",
     "copy-readme": "copy .\\README.md .\\dist\\ngx-scrollbar-indicator",
-    "copy-files": "npm run copy-assets && npm run copy-readme",
+    "copy-files": "npm run copy-assets && npm run copy-license && npm run copy-readme",
     "build_lib": "ng build ngx-scrollbar-indicator",
     "npm_pack": "cd dist/ngx-scrollbar-indicator && npm pack",
     "package": "npm run build_lib && npm run copy-files && npm run npm_pack"
