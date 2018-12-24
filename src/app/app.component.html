@@ -2,5 +2,5 @@
   <div *ngFor="let item of DATA" [indicatorItem]="item.first_name">{{item.first_name}}</div>
 </ngx-scrollbar-indicator>
 <br>
-<button (click)="dummy = indicatorRef.goToLetter('a')">Go to 'A'</button>
+<button (click)="indicatorRef.goToLetter('a')">Go to 'A'</button>
 {{indicatorRef.currentCharacterObserver | async}}
