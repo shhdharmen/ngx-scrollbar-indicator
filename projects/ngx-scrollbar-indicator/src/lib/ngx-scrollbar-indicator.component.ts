@@ -231,11 +231,11 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
     });
   }
 
-  /**Scroll to a specific letter, in given duration(default 150), positioned first of last. Returns the offsetTop if element found, else -1.
+  /**Scroll to a specific letter, positioned first of last. Returns the offsetTop if element found, else -1.
    * @param letter Character to which viewport should be scrolled
    * @param position Element of that character group, first or last
    */
-  goToLetter(letter: string, position: string = 'first'): number {
+  goToLetter(letter: string, position = 'first'): number {
     try {
       const offsetTop = this[position + 's'][letter.toUpperCase()].offsetTop;
       this.view.scrollTo({ top: offsetTop, behavior: 'smooth' });
