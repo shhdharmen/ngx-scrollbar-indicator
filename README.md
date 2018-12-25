@@ -43,33 +43,47 @@ import { NgxScrollbarIndicatorModule } from 'ngx-scrollbar-indicator';
 ### Options *ScrollbarIndicatorOptions*
 You can give options according to you need and modify the behavior. All options are optional. Below is full list of options :
 
-| Option  | Type  | Description |
-| ------  | ----  | ----------- |
-| enable  | boolean | Enable or disable indicator. *Default : true* |
-| changeWhen  | EChangeWhen (top/visible) | When the indicator should change the character? When character has reach top of container or as soon as it becomes visible in container. *Default : EChangeWhen.top*  |
-| containerHeight | number  | height of the container, without this, scrolling won't work. *Default : 500*  |
-| theme | ETheme (circular/waterDrop/squareLike)  | Visual theme of indicator, totally based on scss. *Default : ETheme.waterDrop*  |
-| position  | EPosition (auto/top)  | Position of indicator, whether to show on top or auto. *Default : EPosition.auto* |
-| showWhen  | EShowWhen (always/scroll) | When to show the indicator, always or onscroll/onhover. *Default : EShowWhen.scroll*  |
+| Option          | Type                                   | Description                                                                                                                                                          |
+| --------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| enable          | boolean                                | Enable or disable indicator. *Default : true*                                                                                                                        |
+| changeWhen      | EChangeWhen (top/visible)              | When the indicator should change the character? When character has reach top of container or as soon as it becomes visible in container. *Default : EChangeWhen.top* |
+| containerHeight | number                                 | height of the container, without this, scrolling won't work. *Default : 500*                                                                                         |
+| theme           | ETheme (circular/waterDrop/squareLike) | Visual theme of indicator, totally based on scss. *Default : ETheme.waterDrop*                                                                                       |
+| position        | EPosition (auto/top)                   | Position of indicator, whether to show on top or auto. *Default : EPosition.auto*                                                                                    |
+| showWhen        | EShowWhen (always/scroll)              | When to show the indicator, always or onscroll/onhover. *Default : EShowWhen.scroll*                                                                                 |
 
 ### Public Properties
 
-| Name  | Type  | Description |
-| ----  | ----  | ----------- |
-| all | ScrollbarIndicatorItemDirective[] | All Items Array |
-| firsts  | { [x: string]: ScrollbarIndicatorItemDirective }  | JSON Object with first item of each character |
-| lasts | { [x: string]: ScrollbarIndicatorItemDirective }  | JSON Object with last item of each character  |
-| view  | HTMLElement | Viewport Element, on which scrolling event is handled |
+| Name   | Type                                             | Description                                           |
+| ------ | ------------------------------------------------ | ----------------------------------------------------- |
+| all    | ScrollbarIndicatorItemDirective[]                | All Items Array                                       |
+| firsts | { [x: string]: ScrollbarIndicatorItemDirective } | JSON Object with first item of each character         |
+| lasts  | { [x: string]: ScrollbarIndicatorItemDirective } | JSON Object with last item of each character          |
+| view   | HTMLElement                                      | Viewport Element, on which scrolling event is handled |
 
 ### Methods
 
-| Name  | Parameters  | Returns | Description |
-| ----  | ----------  | ------- | ----------- |
-| showIndicator | - timer, this will help to maintain frequent calls to this function<br> - duration (default 500), after which indicator will be hidden | Timer, which can be cleared if you are calling this function again within duration. | Ideally, you shouldn't call this. This will show the indicator. This will add 'show' class to the indicator. And After duration(default 500), if will remove the same. Calling this won't make any sense if showWhen is set to EShowWhen.always |
-| goToLetter  | - letter, Character to which viewport should be scrolled<br>- position (default 'first') Element of that character group, first or last | offsetTop of element or -1 if error | Scroll to a specific letter, positioned first of last. Returns the offsetTop if element found, else -1.
+| Name          | Parameters                                                                                                                              | Returns                                                                             | Description                                                                                                                                                                                                                                     |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| showIndicator | - timer, this will help to maintain frequent calls to this function<br> - duration (default 500), after which indicator will be hidden  | Timer, which can be cleared if you are calling this function again within duration. | Ideally, you shouldn't call this. This will show the indicator. This will add 'show' class to the indicator. And After duration(default 500), if will remove the same. Calling this won't make any sense if showWhen is set to EShowWhen.always |
+| goToLetter    | - letter, Character to which viewport should be scrolled<br>- position (default 'first') Element of that character group, first or last | offsetTop of element or -1 if error                                                 | Scroll to a specific letter, positioned first of last. Returns the offsetTop if element found, else -1.                                                                                                                                         |
 
 ### Observers
 
-| Name  | Type  | Description |
-| ----  | ----  | ----------- |
-| currentCharacterObserver  | Observable<string>  | Stream that emits current character in indicator
+| Name                     | Type               | Description                                      |
+| ------------------------ | ------------------ | ------------------------------------------------ |
+| currentCharacterObserver | Observable<string> | Stream that emits current character in indicator |
+
+## Styling
+Once you have imported `theme.scss` in `style.scss`, you will hae access to some variables. Be cautios while changing the same:
+```
+$indicator-background-color: #2196f3 !default;
+$indicator-background-size: 46px !default;
+$bubble-font-size: 16px !default;
+$bubble-font-weight: 400 !default;
+$indicator-font-color: #fff !default;
+$indicator-margin-right: 8px !default;
+$indicator-container-right: 105% !default;
+$indicator-right: 105% !default;
+$indicator-square-like-border-radius: 4px !default;
+```
