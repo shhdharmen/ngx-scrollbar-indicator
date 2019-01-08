@@ -1,19 +1,23 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DATA } from './MOCK_DATA';
-import { ScrollbarIndicatorOptions, EChangeWhen, ETheme, EPosition, EShowWhen } from 'projects/ngx-scrollbar-indicator/src/public_api';
-
+import { EChangeWhen, EPosition, EShowWhen, ETheme, ScrollbarIndicatorOptions } from 'ngx-scrollbar-indicator';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  stringify = JSON.stringify;
+  eChangeWhen = EChangeWhen;
+  ePosition = EPosition;
+  eShowWhen = EShowWhen;
+  eTheme = ETheme;
   options: ScrollbarIndicatorOptions = {
     enable: true,
     changeWhen: EChangeWhen.top,
-    containerHeight: 500,
-    theme: ETheme.circular,
-    position: EPosition.top,
+    containerHeight: 350,
+    theme: ETheme.waterDrop,
+    position: EPosition.auto,
     showWhen: EShowWhen.scroll
   };
   DATA: { 'first_name': string }[];

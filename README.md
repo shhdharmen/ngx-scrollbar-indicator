@@ -1,13 +1,13 @@
 # ngx-scrollbar-indicator
-![npm package](https://badge.fury.io/js/ngx-scrollbar-indicator.svg "npm package")
-![Travis CI Build](https://travis-ci.com/shhdharmen/ngx-scrollbar-indicator.svg?branch=master "Travis-CI Build")
+[![npm package](https://badge.fury.io/js/ngx-scrollbar-indicator.svg)](https://www.npmjs.com/package/ngx-scrollbar-indicator "npm package")
+[![Travis CI Build](https://travis-ci.com/shhdharmen/ngx-scrollbar-indicator.svg?branch=master)](https://travis-ci.com/shhdharmen/ngx-scrollbar-indicator "Travis-CI Build")
 [![online demo](https://img.shields.io/badge/github--pages-online-blue.svg)](https://shhdharmen.github.io/ngx-scrollbar-indicator/ "online demo")
 [![online demo](https://img.shields.io/badge/stackblitz-online-blue.svg)](https://stackblitz.com/edit/ngx-scrollbar-indicator-basic?file=src/app/app.component.html "online demo")
 ![Downloads](https://img.shields.io/npm/dt/ngx-scrollbar-indicator.svg "Total Downloads")
-![MIT License](https://img.shields.io/npm/l/ngx-scrollbar-indicator.svg "MIT License")
+[![MIT License](https://img.shields.io/npm/l/ngx-scrollbar-indicator.svg)](https://github.com/shhdharmen/ngx-scrollbar-indicator/blob/master/LICENSE "MIT License")
 [![codecov](https://codecov.io/gh/shhdharmen/ngx-scrollbar-indicator/branch/master/graph/badge.svg)](https://codecov.io/gh/shhdharmen/ngx-scrollbar-indicator)
-![npms score](https://badges.npms.io/ngx-scrollbar-indicator.svg "NPMS Score")
-![dependencies](https://img.shields.io/david/shhdharmen/ngx-scrollbar-indicator.svg "Dependencies")
+[![npms score](https://badges.npms.io/ngx-scrollbar-indicator.svg)](https://npms.io/search?q=ngx-scrollbar-indicator "NPMS Score")
+[![dependencies](https://img.shields.io/david/shhdharmen/ngx-scrollbar-indicator.svg)](https://www.npmjs.com/package/ngx-scrollbar-indicator#dependencies "Dependencies")
 
 ## What it does?
 ![what it does gif](./chrome-capture.gif)
@@ -33,7 +33,7 @@ import { NgxScrollbarIndicatorModule } from 'ngx-scrollbar-indicator';
 4.  In `app.component.html`, wrap you element, in which you want indicator, like below :
 ```
 <ngx-scrollbar-indicator #indicatorRef>
-  <!-- Your element with *ngFor goes here. Do not forget to add attrribute 'indicatorItem', which takes string from which first character will be visible in indicator. -->
+  <!-- Your element with *ngFor goes here. Do not forget to add attribute 'indicatorItem', which takes string from which first character will be visible in indicator. -->
 </ngx-scrollbar-indicator>
 ```
 5.  You can see the live example here : [Stackblitz](https://stackblitz.com/edit/ngx-scrollbar-indicator-basic?file=src/app/app.component.html)
@@ -87,3 +87,4 @@ $indicator-container-right: 105% !default;
 $indicator-right: 105% !default;
 $indicator-square-like-border-radius: 4px !default;
 ```
+You can find the example on [stackblitz](https://stackblitz.com/edit/ngx-scrollbar-indicator-style?file=src%2Fstyles.scss).
