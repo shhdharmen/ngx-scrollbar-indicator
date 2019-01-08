@@ -10,15 +10,12 @@ branches:
 
 before_script:
   - npm install -g @angular/cli
-  - npm install codecov -g
 
 script:
   - ng lint
+  - ng test --watch=false
   - npm run build_lib
   - ng build --prod --base-href ./
-
-after_success:
-  - codecov
 
 deploy:
   provider: pages
