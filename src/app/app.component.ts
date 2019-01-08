@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DATA } from './MOCK_DATA';
-import { EChangeWhen, EPosition, EShowWhen, ETheme, ScrollbarIndicatorOptions } from 'ngx-scrollbar-indicator';
+import { EChangeWhen, EPosition, EShowWhen, ETheme, ScrollbarIndicatorOptions } from 'projects/ngx-scrollbar-indicator/src/public_api';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
