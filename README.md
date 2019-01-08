@@ -1,11 +1,12 @@
 # ngx-scrollbar-indicator
 [![npm package](https://badge.fury.io/js/ngx-scrollbar-indicator.svg)](https://www.npmjs.com/package/ngx-scrollbar-indicator "npm package")
 [![Travis CI Build](https://travis-ci.com/shhdharmen/ngx-scrollbar-indicator.svg?branch=master)](https://travis-ci.com/shhdharmen/ngx-scrollbar-indicator "Travis-CI Build")
+[![Coverage Status](https://coveralls.io/repos/github/shhdharmen/ngx-scrollbar-indicator/badge.svg?branch=master)](https://coveralls.io/github/shhdharmen/ngx-scrollbar-indicator?branch=master)
 [![online demo](https://img.shields.io/badge/github--pages-online-blue.svg)](https://shhdharmen.github.io/ngx-scrollbar-indicator/ "online demo")
 [![online demo](https://img.shields.io/badge/stackblitz-online-blue.svg)](https://stackblitz.com/edit/ngx-scrollbar-indicator-basic?file=src/app/app.component.html "online demo")
 ![Downloads](https://img.shields.io/npm/dt/ngx-scrollbar-indicator.svg "Total Downloads")
 [![MIT License](https://img.shields.io/npm/l/ngx-scrollbar-indicator.svg)](https://github.com/shhdharmen/ngx-scrollbar-indicator/blob/master/LICENSE "MIT License")
-[![codecov](https://codecov.io/gh/shhdharmen/ngx-scrollbar-indicator/branch/master/graph/badge.svg)](https://codecov.io/gh/shhdharmen/ngx-scrollbar-indicator)
+<!-- [![codecov](https://codecov.io/gh/shhdharmen/ngx-scrollbar-indicator/branch/master/graph/badge.svg)](https://codecov.io/gh/shhdharmen/ngx-scrollbar-indicator) -->
 [![npms score](https://badges.npms.io/ngx-scrollbar-indicator.svg)](https://npms.io/search?q=ngx-scrollbar-indicator "NPMS Score")
 [![dependencies](https://img.shields.io/david/shhdharmen/ngx-scrollbar-indicator.svg)](https://www.npmjs.com/package/ngx-scrollbar-indicator#dependencies "Dependencies")
 
