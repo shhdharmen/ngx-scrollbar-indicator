@@ -89,7 +89,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ]
+            ],
+            "codeCoverage": true
           }
         },
         "lint": {
@@ -145,14 +146,6 @@
           "options": {
             "tsConfig": "projects/ngx-scrollbar-indicator/tsconfig.lib.json",
             "project": "projects/ngx-scrollbar-indicator/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ngx-scrollbar-indicator/src/test.ts",
-            "tsConfig": "projects/ngx-scrollbar-indicator/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-scrollbar-indicator/karma.conf.js"
           }
         },
         "lint": {
