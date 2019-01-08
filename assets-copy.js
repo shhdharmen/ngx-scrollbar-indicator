@@ -15,6 +15,6 @@ fs.mkdir(destination, function (err) {
       console.error(err);
       process.exit(-1);
     }
-    console.log('assets-copy done!');
+    console.log('assets-copy done!!');
   });
 });
