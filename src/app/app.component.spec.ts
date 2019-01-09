@@ -1,27 +1,30 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NgxScrollbarIndicatorModule } from 'projects/ngx-scrollbar-indicator/src/public_api';
+import { HomeComponent } from './home/home.component';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         NgxScrollbarIndicatorModule
       ],
       declarations: [
+        HomeComponent,
         AppComponent
       ]
     }).compileComponents();
   }));
-  let fixture: ComponentFixture<AppComponent>;
-  it('should create the app', () => {
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    fixture.detectChanges();
   });
 
-  it('should call ngOnInit method and data length must be 1003', () => {
-    fixture.componentInstance.ngOnInit();
-    expect(fixture.componentInstance.DATA.length).toBe(1003);
+  it('should create the app', () => {
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
   });
 });

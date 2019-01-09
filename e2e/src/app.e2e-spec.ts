@@ -7,8 +7,8 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display \'Current Options\'', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to ngx-scrollbar-indicator-app!');
+    expect(page.getParagraphText()).toEqual('Current Options');
   });
 });

@@ -4,7 +4,8 @@
         "options": {
             "main": "projects/ngx-scrollbar-indicator/src/test.ts",
             "tsConfig": "projects/ngx-scrollbar-indicator/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-scrollbar-indicator/karma.conf.js"
+            "karmaConfig": "projects/ngx-scrollbar-indicator/karma.conf.js",
+            "codeCoverage": true
         }
     }
 }
