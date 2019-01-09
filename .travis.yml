@@ -29,9 +29,7 @@ script:
   # - npm run e2e -- --protractor-config=./e2e/protractor-ci.conf.js
   - npm run build_lib
   - npm run build -- --prod --base-href ./
-
-after_script:
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - npm run codecov
 
 deploy:
   provider: pages
