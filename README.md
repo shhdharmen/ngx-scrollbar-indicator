@@ -88,3 +88,6 @@ $indicator-right: 105% !default;
 $indicator-square-like-border-radius: 4px !default;
 ```
 You can find the example on [stackblitz](https://stackblitz.com/edit/ngx-scrollbar-indicator-style?file=src%2Fstyles.scss).
+
+## ToDos
+- Use [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)

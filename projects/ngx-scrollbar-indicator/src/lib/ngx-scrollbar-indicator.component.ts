@@ -1,7 +1,7 @@
 import {
   Component,
   ViewChild, Input,
-  ContentChildren, QueryList, ElementRef, HostListener, OnInit, OnChanges, AfterViewInit, AfterContentInit
+  ContentChildren, QueryList, ElementRef, HostListener, OnInit, OnChanges, AfterViewInit, AfterContentInit, OnDestroy
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ScrollbarIndicatorOptions, EChangeWhen, EPosition, EShowWhen, ETheme } from './interface/scrollbar-indicator-options';
@@ -25,7 +25,7 @@ import { ScrollbarIndicatorItemDirective } from './directive/scrollbar-indicator
   </div>
 </div>`
 })
-export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterViewInit, AfterContentInit {
+export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterViewInit, AfterContentInit, OnDestroy {
   /**
    * Default options for ng-scrollbar-indicator
   */
@@ -35,8 +35,7 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
     containerHeight: 500,
     position: EPosition.auto,
     showWhen: EShowWhen.scroll,
-    theme: ETheme.waterDrop,
-    showCharacterPanel: false
+    theme: ETheme.waterDrop
   };
   /**
    * User input for options
@@ -118,6 +117,7 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
   /**If user has not provided any options, take default ones. */
   private checkOptions() {
     if (this.options) {
+      this.options.enable = this.options.enable ? this.options.enable : this.defaultOptions.enable;
       this.options.changeWhen = this.options.changeWhen ? this.options.changeWhen : this.defaultOptions.changeWhen;
       this.options.containerHeight = this.options.containerHeight ? this.options.containerHeight : this.defaultOptions.containerHeight;
       this.options.position = this.options.position ? this.options.position : this.defaultOptions.position;
@@ -252,5 +252,9 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
     if (this.options.enable) {
       this.stylizeMainIndicator();
     }
+  }
+
+  ngOnDestroy() {
+    this._currentCharacterObserver.unsubscribe();
   }
 }
