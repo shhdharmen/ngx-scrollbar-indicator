@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { HomeComponent } from './basic.component';
 import { NgxScrollbarIndicatorModule, NgxScrollbarIndicatorComponent } from 'projects/ngx-scrollbar-indicator/src/public_api';
 
 describe('HomeComponent', () => {

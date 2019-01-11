@@ -1,0 +1,48 @@
+// btn-group inspired from https://www.w3schools.com/howto/howto_css_button_group.asp
+.btn-group {
+    :not(:last-child) {
+        border-right: none;
+        /* Prevent double borders */
+    }
+    &:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    button {
+        transition: all 0.25s linear;
+        border: 1px solid green;
+        /* Green border */
+        color: white;
+        /* White text */
+        padding: 8px 16px;
+        /* Some padding */
+        cursor: pointer;
+        /* Pointer/hand icon */
+        float: left;
+        /* Float the buttons side by side */
+        &:hover {
+            background-color: #3e8e41;
+        }
+        &.active {
+            background-color: #4CAF50;
+            /* Green background */
+            font-weight: bold;
+            @extend .shadow;
+        }
+        &:not(.active) {
+            background-color: rgb(20, 92, 23);
+            /* Green background */
+            @extend .inset-shadow;
+        }
+    }
+}
+
+// shadow inspired from https://codepen.io/shhdharmen/pen/LMbQpK
+.shadow {
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.inset-shadow {
+    box-shadow: inset 0px 2px 1px -1px rgba(0, 0, 0, 0.2), inset 0px 1px 1px 0px rgba(0, 0, 0, 0.14), inset 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}

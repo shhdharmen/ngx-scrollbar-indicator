@@ -1,6 +1,6 @@
 {
   "name": "ngx-scrollbar-indicator-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -29,6 +29,7 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",
     "ncp": "^2.0.0",
     "rxjs": "~6.3.3",

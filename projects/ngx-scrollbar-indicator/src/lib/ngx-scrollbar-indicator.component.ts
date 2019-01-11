@@ -153,7 +153,7 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
   private updateCharacter() {
     const viewScrollTop = this.view.scrollTop;
     const viewOffsetHeight = this.view.offsetHeight;
-    this._characters.find(key => {
+    this._listToBeConsidered.find(key => {
       const firstItem = this.firsts[key];
       const lastItem = this.lasts[key];
       const condition = (viewScrollTop <= firstItem.offsetTop &&
@@ -209,7 +209,7 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
   }
 
   /**Process number of children and generate firsts and lasts objects */
-  private startCalculation() {
+  startCalculation() {
     setTimeout(() => {
       this._numberOfItems = this._items.length;
       this._items.forEach(item => {

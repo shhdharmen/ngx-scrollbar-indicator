@@ -1,1 +1,6 @@
-<app-home></app-home>
+<div class="btn-group">
+    <button [routerLink]="['/basic']" routerLinkActive="active">Basic</button>
+    <button [routerLink]="['/bootstrap']" routerLinkActive="active">Bootstrap</button>
+</div>
+<br><br>
+<router-outlet></router-outlet>

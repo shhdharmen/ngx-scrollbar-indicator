@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row bg-white position-sticky border-bottom align-items-center" style="top: 0;z-index: 2;">
+    <div class="col-12 my-2">
+      <div class="btn-group" role="group" aria-label="Go To Letter">
+        <a [routerLink]="['./core']" routerLinkActive="btn-primary text-white" class="btn btn-outline-secondary">Core Example</a>
+        <a [routerLink]="['./more']" routerLinkActive="btn-primary text-white" class="btn btn-outline-secondary">More
+          Examples</a>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
