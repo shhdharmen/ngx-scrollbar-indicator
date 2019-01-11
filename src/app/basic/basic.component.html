@@ -1,35 +1,40 @@
-<p>Basic Example Code Available at : <a href="https://github.com/shhdharmen/ngx-scrollbar-indicator/tree/master/src/app/basic" target="_blank">Git</a></p>
-<span id="currentOptions">Current Options</span> : {{stringify(options)}}
-<hr>
-<ngx-scrollbar-indicator #indicatorRef [options]="options">
-  <div *ngFor="let item of DATA" [indicatorItem]="item.first_name">{{item.first_name}}</div>
-</ngx-scrollbar-indicator>
-<hr>
-Go to letter
-<button (click)="indicatorRef.goToLetter('a')">Go to 'A'</button>
-<button (click)="indicatorRef.goToLetter('a', 'last')">Go to 'A' : last</button>
-<br>
-Show Indicator
-<button (click)="showIndicator()">Show Indicator</button>
-<button (click)="showIndicator(3000)">Show Indicator for 3 Seconds</button>
-<br>
-Themes
-<button (click)="options.theme = eTheme.circular" [ngClass]="{'active' : options.theme == eTheme.circular}">Theme :
-  circular</button>
-<button (click)="options.theme = eTheme.squareLike" [ngClass]="{'active' : options.theme == eTheme.squareLike}">Theme :
-  squareLike</button>
-<button (click)="options.theme = eTheme.waterDrop" [ngClass]="{'active' : options.theme == eTheme.waterDrop}">Theme :
-  waterDrop</button><br>
-Indicator Position
-<button (click)="options.position = ePosition.top" [ngClass]="{'active' : options.position == ePosition.top}">Top</button>
-<button (click)="options.position = ePosition.auto" [ngClass]="{'active' : options.position == ePosition.auto}">Auto</button>
-<br>
-Indicator Change When <small><b>TOP :</b> Means, show character which is on top of view port, <b>VISIBLE :</b> Means, show character which is on bottom of view port.&nbsp;</small>
-<button (click)="changeWhen(eChangeWhen.top)" [ngClass]="{'active' : options.changeWhen == eChangeWhen.top}">Top</button>
-<button (click)="changeWhen(eChangeWhen.visible)" [ngClass]="{'active' : options.changeWhen == eChangeWhen.visible}">Visible</button>
-<br>
-Indicator Show When
-<button (click)="options.showWhen = eShowWhen.always" [ngClass]="{'active' : options.showWhen == eShowWhen.always}">Always</button>
-<button (click)="options.showWhen = eShowWhen.scroll" [ngClass]="{'active' : options.showWhen == eShowWhen.scroll}">Scroll</button>
-<br><br>
-<p> Current Indicator Character : {{indicatorRef.currentCharacterObserver | async}}</p>
+<div class="container">
+  <p>Basic Example Code Available at : <a href="https://github.com/shhdharmen/ngx-scrollbar-indicator/tree/master/src/app/basic"
+      target="_blank">Git</a></p>
+  <span id="currentOptions">Current Options</span> : {{stringify(options)}}
+  <hr>
+  <ngx-scrollbar-indicator #indicatorRef [options]="options">
+    <div *ngFor="let item of DATA" [indicatorItem]="item.first_name">{{item.first_name}}</div>
+  </ngx-scrollbar-indicator>
+  <hr>
+  Go to letter
+  <button (click)="indicatorRef.goToLetter('a')">Go to 'A'</button>
+  <button (click)="indicatorRef.goToLetter('a', 'last')">Go to 'A' : last</button>
+  <br>
+  Show Indicator
+  <button (click)="showIndicator()">Show Indicator</button>
+  <button (click)="showIndicator(3000)">Show Indicator for 3 Seconds</button>
+  <br>
+  Themes
+  <button (click)="options.theme = eTheme.circular" [ngClass]="{'active' : options.theme == eTheme.circular}">Theme :
+    circular</button>
+  <button (click)="options.theme = eTheme.squareLike" [ngClass]="{'active' : options.theme == eTheme.squareLike}">Theme
+    :
+    squareLike</button>
+  <button (click)="options.theme = eTheme.waterDrop" [ngClass]="{'active' : options.theme == eTheme.waterDrop}">Theme :
+    waterDrop</button><br>
+  Indicator Position
+  <button (click)="options.position = ePosition.top" [ngClass]="{'active' : options.position == ePosition.top}">Top</button>
+  <button (click)="options.position = ePosition.auto" [ngClass]="{'active' : options.position == ePosition.auto}">Auto</button>
+  <br>
+  Indicator Change When <small><b>TOP :</b> Means, show character which is on top of view port, <b>VISIBLE :</b> Means,
+    show character which is on bottom of view port.&nbsp;</small>
+  <button (click)="changeWhen(eChangeWhen.top)" [ngClass]="{'active' : options.changeWhen == eChangeWhen.top}">Top</button>
+  <button (click)="changeWhen(eChangeWhen.visible)" [ngClass]="{'active' : options.changeWhen == eChangeWhen.visible}">Visible</button>
+  <br>
+  Indicator Show When
+  <button (click)="options.showWhen = eShowWhen.always" [ngClass]="{'active' : options.showWhen == eShowWhen.always}">Always</button>
+  <button (click)="options.showWhen = eShowWhen.scroll" [ngClass]="{'active' : options.showWhen == eShowWhen.scroll}">Scroll</button>
+  <br><br>
+  <p> Current Indicator Character : {{indicatorRef.currentCharacterObserver | async}}</p>
+</div>
