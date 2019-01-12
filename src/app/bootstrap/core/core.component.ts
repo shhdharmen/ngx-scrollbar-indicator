@@ -45,4 +45,10 @@ export class CoreComponent implements OnInit {
     }
   }
 
+  changeWhen() {
+    setTimeout(() => {
+      this.indicatorRef.startCalculation();
+    });
+  }
+
 }

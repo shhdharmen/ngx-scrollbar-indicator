@@ -96,11 +96,11 @@
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary" [class.active]="options.changeWhen == eChangeWhen.top">
             <input type="radio" name="changeWhens" id="changeWhen1" autocomplete="off" [checked]="options.changeWhen == eChangeWhen.top"
-              [value]="eChangeWhen.top" [(ngModel)]="options.changeWhen"> Top
+              [value]="eChangeWhen.top" [(ngModel)]="options.changeWhen" (ngModelChange)="changeWhen()"> Top
           </label>
           <label class="btn btn-secondary" [class.active]="options.changeWhen == eChangeWhen.visible">
             <input type="radio" name="changeWhens" id="changeWhen2" autocomplete="off" [checked]="options.changeWhen == eChangeWhen.visible"
-              [value]="eChangeWhen.visible" [(ngModel)]="options.changeWhen"> Visible
+              [value]="eChangeWhen.visible" [(ngModel)]="options.changeWhen" (ngModelChange)="changeWhen()"> Visible
           </label>
         </div>
       </div>
