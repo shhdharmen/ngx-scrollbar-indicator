@@ -14,21 +14,24 @@ ___
 
 ## Table of Contents
 
-- [What it does?](#what-it-does)
-- [Examples](#examples)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API](#api)
-  - [Options](#options)
-  - [Properties](#properties)
-  - [Methods](#methods)
-  - [Observers](#observers)
-- [Styling](#styling)
-- [Development](#development)
-- [Issues](#issues)
-- [Author](#author)
-- [Credit](#credit)
-- [To Dos](#to-dos)
+- [ngx-scrollbar-indicator](#ngx-scrollbar-indicator)
+  - [Table of Contents](#table-of-contents)
+  - [What it does?](#what-it-does)
+    - [Description](#description)
+  - [Examples](#examples)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [API](#api)
+    - [Options *ScrollbarIndicatorOptions*](#options-scrollbarindicatoroptions)
+    - [Properties](#properties)
+    - [Methods](#methods)
+    - [Observers](#observers)
+  - [Styling](#styling)
+  - [Development](#development)
+  - [Issues](#issues)
+  - [Author](#author)
+  - [Credit](#credit)
+  - [ToDos](#todos)
 
 ___
 
@@ -97,7 +100,7 @@ import { NgxScrollbarIndicatorModule } from 'ngx-scrollbar-indicator';
 
 <a name="options">
 
-### Options *ScrollbarIndicatorOptions*
+### Options *[ScrollbarIndicatorOptions](https://github.com/shhdharmen/ngx-scrollbar-indicator/blob/master/projects/ngx-scrollbar-indicator/src/lib/interface/scrollbar-indicator-options.ts)*
 - You can give options according to you need and modify the behavior. All options are optional. Below is full list of options :
 
 | Option          | Type                                   | Description                                                                                                                                                          |
@@ -115,7 +118,7 @@ import { NgxScrollbarIndicatorModule } from 'ngx-scrollbar-indicator';
 
 | Name   | Type                                             | Description                                           |
 | ------ | ------------------------------------------------ | ----------------------------------------------------- |
-| all    | ScrollbarIndicatorItemDirective[]                | All Items Array                                       |
+| all    | [ScrollbarIndicatorItemDirective](https://github.com/shhdharmen/ngx-scrollbar-indicator/blob/master/projects/ngx-scrollbar-indicator/src/lib/directive/scrollbar-indicator-item.directive.ts)[]                | All Items Array                                       |
 | firsts | { [x: string]: ScrollbarIndicatorItemDirective } | JSON Object with first item of each character         |
 | lasts  | { [x: string]: ScrollbarIndicatorItemDirective } | JSON Object with last item of each character          |
 | view   | HTMLElement                                      | Viewport Element, on which scrolling event is handled |
