@@ -1,4 +1,5 @@
-<ngx-scrollbar-indicator-cdk #indicatorRef [options]="options">
+<ngx-scrollbar-indicator-cdk #indicatorRef [options]="options" (elementScrolled)="detectChanges()">
   <div *ngFor="let item of DATA" [indicatorItem]="item.first_name">{{item.first_name}}</div>
 </ngx-scrollbar-indicator-cdk>
+<button (click)="indicatorRef.goToLetter('A')">Go To Letter A</button>
 <p>{{indicatorRef.currentCharacterObserver | async}}</p>

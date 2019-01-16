@@ -10,7 +10,10 @@ import {
   ContentChildren,
   QueryList,
   AfterContentInit,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectorRef,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { ScrollbarIndicatorOptions, EPosition, EChangeWhen, EShowWhen, ETheme } from '../interface/scrollbar-indicator-options';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
@@ -45,10 +48,12 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
   @ViewChild(CdkScrollable) scrollable: CdkScrollable;
   @ViewChild('indicator') indicator: ElementRef;
 
+  @Output() elementScrolled = new EventEmitter();
+
   // Properties
   /**Stream that emits current character */
-  private _currentCharacterObserver1 = new Subject<string>();
-  currentCharacterObserver1 = this._currentCharacterObserver1.asObservable();
+  private _currentCharacterObserver = new Subject<string>();
+  currentCharacterObserver = this._currentCharacterObserver.asObservable();
   /**EShowWhen interface variable, for internal use only */
   private _eShowWhen = EShowWhen;
   viewScrollTop: number;
@@ -62,16 +67,14 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
   private _listToBeConsidered: string[];
   private _characters = [];
   numberOfItems: number;
-  test: string;
-
+  /**EShowWhen interface variable, for internal use only. Used in HTML */
+  eShowWhen = EShowWhen;
   constructor(private _scrollDispatcher: ScrollDispatcher,
-    private _renderer: Renderer2) {
+    private _renderer: Renderer2,
+    private _changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.currentCharacterObserver1.subscribe(value => {
-      this.test = value;
-    });
     this.checkOptions();
   }
 
@@ -90,6 +93,7 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
     this._scrollDispatcher.register(this.scrollable);
     this.viewScrollHeight = this.scrollable.getElementRef().nativeElement.scrollHeight;
     this._scrollDispatcher.scrolled(200).subscribe((cdks: CdkScrollable) => {
+      this._changeDetectorRef.detach();
       this.viewScrollTop = cdks.measureScrollOffset('top');
       const percentTop = (this.viewScrollTop * 100) / this.viewScrollHeight;
       this._renderer.setStyle(this.indicator.nativeElement, 'top', (Math.round(percentTop * 100) / 100) + '%');
@@ -102,6 +106,7 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
     this._scrollDispatcher.register(this.scrollable);
     this.viewScrollHeight = this.scrollable.getElementRef().nativeElement.scrollHeight;
     this._scrollDispatcher.scrolled(200).subscribe((cdks: CdkScrollable) => {
+      this._changeDetectorRef.detach();
       this.viewScrollTop = cdks.measureScrollOffset('top');
       this.updateCharacter();
     });
@@ -131,7 +136,9 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
         (this.viewScrollTop <= lastItem.offsetTop &&
           (lastItem.offsetHeight + lastItem.offsetTop) < (this.viewScrollTop + this.viewScrollHeight));
       if (condition) {
-        this._currentCharacterObserver1.next(key);
+        this._currentCharacterObserver.next(key);
+        this._changeDetectorRef.detectChanges();
+        this.elementScrolled.emit();
         return condition;
       }
     });
@@ -145,7 +152,7 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
   }
 
   ngOnDestroy() {
-    this._currentCharacterObserver1.unsubscribe();
+    this._currentCharacterObserver.unsubscribe();
   }
 
   /**Process number of children and generate firsts and lasts objects */
@@ -184,5 +191,22 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
       this.indicator.nativeElement.classList.remove('show');
     }, duration);
     return timer;
+  }
+
+  /**Scroll to a specific letter, positioned first of last.
+   * Returns the offsetTop if element found, else -1.
+   * This function will work only in Non-IE Browsers
+   * @param letter Character to which viewport should be scrolled
+   * @param position Element of that character group, first or last
+   */
+  goToLetter(letter: string, position = 'first'): number {
+    try {
+      const offsetTop = this[position + 's'][letter.toUpperCase()].offsetTop;
+      this.scrollable.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      return offsetTop;
+    } catch (e) {
+      console.error('The letter you tried to scroll to, could not be found in list. Full error log can be found below:\n', e);
+      return -1;
+    }
   }
 }

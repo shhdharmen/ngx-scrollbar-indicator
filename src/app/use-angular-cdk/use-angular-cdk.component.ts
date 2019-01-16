@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import {
   EChangeWhen,
   EPosition,
@@ -32,7 +32,14 @@ export class UseAngularCdkComponent implements OnInit {
   DATA: { 'first_name': string }[];
   timer: any;
 
+  constructor(private _changeDetectorRef: ChangeDetectorRef) {
+  }
+
   ngOnInit() {
     this.DATA = DATA.sort((a, b) => a.first_name < b.first_name ? -1 : (a.first_name > b.first_name ? 1 : 0));
+  }
+
+  detectChanges() {
+    this._changeDetectorRef.detectChanges();
   }
 }

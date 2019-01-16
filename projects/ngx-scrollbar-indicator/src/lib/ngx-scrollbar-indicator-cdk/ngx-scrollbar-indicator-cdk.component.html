@@ -1,6 +1,14 @@
 <div class="scrollbar-indicator-cdk-container">
   <div [ngStyle]="{'height': options.containerHeight + 'px', 'overflow-y': 'auto'}" cdkScrollable>
     <ng-content></ng-content>
+    <div style="position: absolute;top: 18px;bottom: 18px;right: 18px;">
+      <div style="position: relative;height: 100%;">
+        <div class="indicator {{options.theme}}" [ngClass]="{'always' : options.showWhen === eShowWhen.always}"
+          #indicator>
+          <div class="background"></div>
+          <div class="text">{{currentCharacterObserver | async}}</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div style="position: absolute; top: 0" #indicator>{{test}}</div>
 </div>
