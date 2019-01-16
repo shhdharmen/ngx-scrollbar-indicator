@@ -1,21 +1,15 @@
 # ngx-scrollbar-indicator
 [![npm package](https://badge.fury.io/js/ngx-scrollbar-indicator.svg)](https://www.npmjs.com/package/ngx-scrollbar-indicator "npm package")
 [![Travis CI Build](https://travis-ci.com/shhdharmen/ngx-scrollbar-indicator.svg?branch=master)](https://travis-ci.com/shhdharmen/ngx-scrollbar-indicator "Travis-CI Build")
-[![codecov](https://codecov.io/gh/shhdharmen/ngx-scrollbar-indicator/branch/master/graph/badge.svg)](https://codecov.io/gh/shhdharmen/ngx-scrollbar-indicator)
 [![online demo](https://img.shields.io/badge/github--pages-online-blue.svg)](https://shhdharmen.github.io/ngx-scrollbar-indicator/ "online demo")
 [![online demo](https://img.shields.io/badge/stackblitz-online-blue.svg)](https://stackblitz.com/edit/ngx-scrollbar-indicator-basic?file=src/app/app.component.html "online demo")
-![Downloads](https://img.shields.io/npm/dt/ngx-scrollbar-indicator.svg "Total Downloads")
 [![MIT License](https://img.shields.io/npm/l/ngx-scrollbar-indicator.svg)](https://github.com/shhdharmen/ngx-scrollbar-indicator/blob/master/LICENSE "MIT License")
-[![npms score](https://badges.npms.io/ngx-scrollbar-indicator.svg)](https://npms.io/search?q=ngx-scrollbar-indicator "NPMS Score")
-[![dependencies](https://img.shields.io/david/shhdharmen/ngx-scrollbar-indicator.svg)](https://www.npmjs.com/package/ngx-scrollbar-indicator#dependencies "Dependencies")
 
 Consider a scenario, where you have 100s of items, sorted alphabetically. Now, when user scrolls through the same, user doesn't know easily which character he/she has arrived, this is where ngx-scrollbar-indicator comes in picture. This will add an indicator to scrollbar, which will show first character of the item in view port.
 ___
 
 ## Table of Contents
 
-- [ngx-scrollbar-indicator](#ngx-scrollbar-indicator)
-  - [Table of Contents](#table-of-contents)
   - [What it does?](#what-it-does)
     - [Description](#description)
   - [Examples](#examples)
@@ -32,6 +26,7 @@ ___
   - [Author](#author)
   - [Credit](#credit)
   - [ToDos](#todos)
+  - [Badges](#badges)
 
 ___
 
@@ -210,3 +205,17 @@ I would like to give few credits, as this is my first Angular Library.
 - Show custom number of characters in indicator
 - Add example with [Angular Material](https://material.angular.io/)
 - Add more examples with bootstrap
+
+<a name="badges">
+
+## Badges
+
+[![npm package](https://badge.fury.io/js/ngx-scrollbar-indicator.svg)](https://www.npmjs.com/package/ngx-scrollbar-indicator "npm package")
+[![Travis CI Build](https://travis-ci.com/shhdharmen/ngx-scrollbar-indicator.svg?branch=master)](https://travis-ci.com/shhdharmen/ngx-scrollbar-indicator "Travis-CI Build")
+[![codecov](https://codecov.io/gh/shhdharmen/ngx-scrollbar-indicator/branch/master/graph/badge.svg)](https://codecov.io/gh/shhdharmen/ngx-scrollbar-indicator)
+[![online demo](https://img.shields.io/badge/github--pages-online-blue.svg)](https://shhdharmen.github.io/ngx-scrollbar-indicator/ "online demo")
+[![online demo](https://img.shields.io/badge/stackblitz-online-blue.svg)](https://stackblitz.com/edit/ngx-scrollbar-indicator-basic?file=src/app/app.component.html "online demo")
+![Downloads](https://img.shields.io/npm/dt/ngx-scrollbar-indicator.svg "Total Downloads")
+[![MIT License](https://img.shields.io/npm/l/ngx-scrollbar-indicator.svg)](https://github.com/shhdharmen/ngx-scrollbar-indicator/blob/master/LICENSE "MIT License")
+[![npms score](https://badges.npms.io/ngx-scrollbar-indicator.svg)](https://npms.io/search?q=ngx-scrollbar-indicator "NPMS Score")
+[![dependencies](https://img.shields.io/david/shhdharmen/ngx-scrollbar-indicator.svg)](https://www.npmjs.com/package/ngx-scrollbar-indicator#dependencies "Dependencies")
