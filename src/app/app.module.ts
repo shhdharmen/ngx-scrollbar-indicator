@@ -16,10 +16,10 @@ const routes: Routes = [
     path: 'bootstrap', component: BootstrapComponent, children: [
       { path: 'core', component: CoreComponent },
       { path: 'more', component: MoreComponent },
-      { path: '', redirectTo: 'core', pathMatch: 'full' }
+      { path: '**', redirectTo: 'core', pathMatch: 'full' }
     ]
   },
-  { path: '', redirectTo: 'bootstrap', pathMatch: 'full' },
+  { path: '**', redirectTo: 'bootstrap', pathMatch: 'full' },
 ];
 
 @NgModule({
