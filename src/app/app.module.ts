@@ -9,9 +9,11 @@ import { BasicComponent } from './basic/basic.component';
 import { BootstrapComponent } from './bootstrap/bootstrap.component';
 import { CoreComponent } from './bootstrap/core/core.component';
 import { MoreComponent } from './bootstrap/more/more.component';
+import { UseAngularCdkComponent } from './use-angular-cdk/use-angular-cdk.component';
 
 const routes: Routes = [
   { path: 'basic', component: BasicComponent },
+  { path: 'use-angular-cdk', component: UseAngularCdkComponent },
   {
     path: 'bootstrap', component: BootstrapComponent, children: [
       { path: 'core', component: CoreComponent },
@@ -28,7 +30,8 @@ const routes: Routes = [
     BasicComponent,
     BootstrapComponent,
     CoreComponent,
-    MoreComponent
+    MoreComponent,
+    UseAngularCdkComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

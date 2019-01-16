@@ -1,0 +1,6 @@
+<div class="scrollbar-indicator-cdk-container">
+  <div [ngStyle]="{'height': options.containerHeight + 'px', 'overflow-y': 'auto'}" cdkScrollable>
+    <ng-content></ng-content>
+  </div>
+  <div style="position: absolute; top: 0" #indicator>{{test}}</div>
+</div>

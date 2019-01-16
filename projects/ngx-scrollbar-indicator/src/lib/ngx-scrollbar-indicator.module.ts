@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
-import { NgxScrollbarIndicatorComponent } from './ngx-scrollbar-indicator.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
+import { NgxScrollbarIndicatorComponent } from './ngx-scrollbar-indicator.component';
 import { ScrollbarIndicatorItemDirective } from './directive/scrollbar-indicator-item.directive';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { NgxScrollbarIndicatorCdkComponent } from './ngx-scrollbar-indicator-cdk/ngx-scrollbar-indicator-cdk.component';
+import { IndicatorComponent } from './ngx-scrollbar-indicator-cdk/indicator/indicator.component';
 
 @NgModule({
-  declarations: [NgxScrollbarIndicatorComponent, ScrollbarIndicatorItemDirective],
+  declarations: [NgxScrollbarIndicatorComponent, ScrollbarIndicatorItemDirective, NgxScrollbarIndicatorCdkComponent, IndicatorComponent],
   imports: [
     CommonModule,
-    BrowserModule
+    ScrollingModule,
+    OverlayModule
   ],
-  exports: [NgxScrollbarIndicatorComponent, ScrollbarIndicatorItemDirective]
+  exports: [NgxScrollbarIndicatorComponent, ScrollbarIndicatorItemDirective, NgxScrollbarIndicatorCdkComponent, IndicatorComponent],
+  entryComponents: [IndicatorComponent]
 })
 export class NgxScrollbarIndicatorModule { }

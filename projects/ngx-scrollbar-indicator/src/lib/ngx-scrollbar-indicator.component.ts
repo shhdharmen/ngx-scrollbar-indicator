@@ -53,7 +53,7 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
   private _currentCharacterObserver = new Subject<string>();
   currentCharacterObserver = this._currentCharacterObserver.asObservable();
   objectKeys = Object.keys;
-  private _numberOfItems: number;
+  numberOfItems: number;
   /**All Items Array */
   all: ScrollbarIndicatorItemDirective[] = [];
   /**JSON Object with first item of each character */
@@ -62,14 +62,13 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
   lasts: { [x: string]: ScrollbarIndicatorItemDirective } = {};
   private _listToBeConsidered: string[];
   private _characters = [];
-  private _ticking = false;
   private _indicatorResponsible: any;
   private _mainIndicator: any;
   private _handleIndicatorTextFunctions: {
     [EPosition.auto]: Function,
     [EPosition.top]: Function
   };
-  /**EShowWhen interface variable, for internal use only */
+  /**EShowWhen interface variable, for internal use only. Used in HTML */
   eShowWhen = EShowWhen;
   /**Viewport Element, on which scrolling event is handled */
   view: HTMLElement;
@@ -211,7 +210,7 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
   /**Process number of children and generate firsts and lasts objects */
   startCalculation() {
     setTimeout(() => {
-      this._numberOfItems = this._items.length;
+      this.numberOfItems = this._items.length;
       this._items.forEach(item => {
         this.all.push(item);
         if (!this.firsts[item.character]) {
