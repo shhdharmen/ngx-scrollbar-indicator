@@ -7,9 +7,13 @@
     <div *ngFor="let item of DATA" [indicatorItem]="item.first_name">{{item.first_name}}</div>
   </ngx-scrollbar-indicator>
   <hr>
-  Go to letter
+  Non-IE Browsers : Go to letter
   <button (click)="indicatorRef.goToLetter('a')">Go to 'A'</button>
   <button (click)="indicatorRef.goToLetter('a', 'last')">Go to 'A' : last</button>
+  <br>
+  IE Browsers : Go to letter
+  <button (click)="indicatorRef.goToLetterIE('a')">Go to 'A'</button>
+  <button (click)="indicatorRef.goToLetterIE('a', 'last')">Go to 'A' : last</button>
   <br>
   Show Indicator
   <button (click)="showIndicator()">Show Indicator</button>

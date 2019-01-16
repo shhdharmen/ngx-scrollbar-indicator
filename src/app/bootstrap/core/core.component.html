@@ -26,10 +26,18 @@
             <label class="font-weight-bold">Functions</label>
           </div>
           <div class="col-12 mb-3">
-            <label>Go To Letter&nbsp;</label>
+            <label>Non-IE Browsers : Go To Letter&nbsp;</label>
             <div class="btn-group" role="group" aria-label="Go To Letter">
               <button type="button" class="btn btn-secondary" (click)="indicatorRef.goToLetter('a')">Go to 'A'</button>
               <button type="button" class="btn btn-secondary" (click)="indicatorRef.goToLetter('a', 'last')">Go to
+                'A' : last</button>
+            </div>
+          </div>
+          <div class="col-12 mb-3">
+            <label>IE Browsers : Go To Letter&nbsp;</label>
+            <div class="btn-group" role="group" aria-label="Go To Letter">
+              <button type="button" class="btn btn-secondary" (click)="indicatorRef.goToLetterIE('a')">Go to 'A'</button>
+              <button type="button" class="btn btn-secondary" (click)="indicatorRef.goToLetterIE('a', 'last')">Go to
                 'A' : last</button>
             </div>
           </div>

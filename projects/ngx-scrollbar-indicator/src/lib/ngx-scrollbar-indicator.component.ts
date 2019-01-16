@@ -231,7 +231,9 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
     });
   }
 
-  /**Scroll to a specific letter, positioned first of last. Returns the offsetTop if element found, else -1.
+  /**Scroll to a specific letter, positioned first of last.
+   * Returns the offsetTop if element found, else -1.
+   * This function will work only in Non-IE Browsers
    * @param letter Character to which viewport should be scrolled
    * @param position Element of that character group, first or last
    */
@@ -239,6 +241,27 @@ export class NgxScrollbarIndicatorComponent implements OnInit, OnChanges, AfterV
     try {
       const offsetTop = this[position + 's'][letter.toUpperCase()].offsetTop;
       this.view.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      return offsetTop;
+    } catch (e) {
+      console.error('The letter you tried to scroll to, could not be found in list. Full error log can be found below:\n', e);
+      return -1;
+    }
+  }
+
+  /**Scroll to a specific letter, positioned first of last.
+   * Returns the offsetTop if element found, else -1.
+   * This function will work only in IE Browsers
+   * @param letter Character to which viewport should be scrolled
+   * @param position Element of that character group, first or last
+   */
+  goToLetterIE(letter: string, position = 'first'): number {
+    try {
+      const offsetTop = this[position + 's'][letter.toUpperCase()].offsetTop;
+      // scrollTo is not working IE Browsers.
+      // Known issue at : https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/15534521/
+      // below is the workaround
+      this.view.scrollTop = offsetTop;
+
       return offsetTop;
     } catch (e) {
       console.error('The letter you tried to scroll to, could not be found in list. Full error log can be found below:\n', e);
