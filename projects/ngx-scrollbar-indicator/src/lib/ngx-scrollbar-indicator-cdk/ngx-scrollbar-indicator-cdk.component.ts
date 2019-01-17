@@ -25,7 +25,7 @@ import { Platform, supportsScrollBehavior } from '@angular/cdk/platform';
   selector: 'ngx-scrollbar-indicator-cdk',
   templateUrl: './ngx-scrollbar-indicator-cdk.component.html',
   styleUrls: ['./ngx-scrollbar-indicator-cdk.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit, AfterContentInit, OnDestroy {
   // Inputs
@@ -43,7 +43,7 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
 
   // Outputs
   /**Emit when scrolled */
-  @Output() elementScrolled = new EventEmitter();
+  @Output() elementScrolled = new EventEmitter<string>();
 
   // Children
   /**ScrollbarIndicatorItemDirectives */
@@ -56,9 +56,6 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
   @ViewChild('indicatorContainerParent') indicatorContainerParent: ElementRef;
 
   // Properties
-  /**Stream that emits current character */
-  private _currentCharacterObserver = new Subject<string>();
-  currentCharacterObserver = this._currentCharacterObserver.asObservable();
   /**This will contain all subscriptions, so that it will be easy to unsubscribe at once. */
   private _subs$: (Subscription | Subject<any>)[] = [];
   /**EShowWhen interface variable, for internal use only */
@@ -90,11 +87,11 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
   /**Check whether platform supports scrolling behaviors */
   private readonly _supportsScrollBehavior = supportsScrollBehavior();
   scrollableElementRef: ElementRef<HTMLElement>;
+  currentCharacter: string;
   constructor(private _scrollDispatcher: ScrollDispatcher,
     private _renderer: Renderer2,
     private _changeDetectorRef: ChangeDetectorRef,
     private _platform: Platform) {
-    this._subs$.push(this._currentCharacterObserver);
   }
 
   ngOnInit() {
@@ -102,6 +99,7 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
   }
 
   ngAfterViewInit() {
+    this._changeDetectorRef.detach();
     this.scrollableElementRef = this.scrollable.getElementRef();
     this.viewScrollHeight = this.scrollableElementRef.nativeElement.scrollHeight;
     this.calculateThumbHeight();
@@ -126,7 +124,6 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
     let timer = null;
     this._scrollDispatcher.register(this.scrollable);
     const scrollSub$ = this._scrollDispatcher.scrolled().subscribe((cdks: CdkScrollable) => {
-      this._changeDetectorRef.detach();
       this.viewScrollTop = cdks.measureScrollOffset('top');
       const percentTop = (this.viewScrollTop * 100) / this.viewScrollHeight;
       this._renderer.setStyle(this.indicator.nativeElement, 'top', (Math.round(percentTop * 100) / 100) + '%');
@@ -139,7 +136,6 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
   private registerScrollChar() {
     this._scrollDispatcher.register(this.scrollable);
     const scrollSub$ = this._scrollDispatcher.scrolled().subscribe((cdks: CdkScrollable) => {
-      this._changeDetectorRef.detach();
       this.viewScrollTop = cdks.measureScrollOffset('top');
       this.updateCharacter();
     });
@@ -170,9 +166,9 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
         (this.viewScrollTop <= lastItem.offsetTop &&
           (lastItem.offsetHeight + lastItem.offsetTop) < (this.viewScrollTop + this.viewScrollHeight));
       if (condition) {
-        this._currentCharacterObserver.next(key);
+        this.currentCharacter = key;
         this._changeDetectorRef.detectChanges();
-        this.elementScrolled.emit();
+        this.elementScrolled.emit(key);
         return condition;
       }
     });

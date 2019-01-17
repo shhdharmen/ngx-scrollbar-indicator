@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import {
   EChangeWhen,
   EPosition,
@@ -12,9 +12,10 @@ import { DATA } from '../MOCK_DATA';
 @Component({
   selector: 'app-use-angular-cdk',
   templateUrl: './use-angular-cdk.component.html',
-  styleUrls: ['./use-angular-cdk.component.scss']
+  styleUrls: ['./use-angular-cdk.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UseAngularCdkComponent implements OnInit {
+export class UseAngularCdkComponent implements OnInit, AfterViewInit {
   @ViewChild('indicatorRef') indicatorRef: NgxScrollbarIndicatorCdkComponent;
   stringify = JSON.stringify;
   eChangeWhen = EChangeWhen;
@@ -31,6 +32,7 @@ export class UseAngularCdkComponent implements OnInit {
   };
   DATA: { 'first_name': string }[];
   timer: any;
+  currentCharacter: string;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {
   }
@@ -39,7 +41,12 @@ export class UseAngularCdkComponent implements OnInit {
     this.DATA = DATA.sort((a, b) => a.first_name < b.first_name ? -1 : (a.first_name > b.first_name ? 1 : 0));
   }
 
-  detectChanges() {
+  ngAfterViewInit() {
+    this._changeDetectorRef.detach();
+  }
+
+  detectChanges(character: string) {
+    this.currentCharacter = character;
     this._changeDetectorRef.detectChanges();
   }
 }
