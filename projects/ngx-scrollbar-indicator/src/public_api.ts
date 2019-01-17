@@ -4,7 +4,6 @@
 
 export * from './lib/ngx-scrollbar-indicator.service';
 export * from './lib/ngx-scrollbar-indicator.component';
-export * from './lib/ngx-scrollbar-indicator-cdk/indicator/indicator.component';
 export * from './lib/ngx-scrollbar-indicator-cdk/ngx-scrollbar-indicator-cdk.component';
 export * from './lib/ngx-scrollbar-indicator.module';
 export * from './lib/interface/scrollbar-indicator-options';
