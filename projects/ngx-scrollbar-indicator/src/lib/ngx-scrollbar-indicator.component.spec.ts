@@ -135,12 +135,29 @@ describe('NgxScrollbarIndicatorComponent', () => {
               hostFixture.whenRenderingDone().then(() => {
                 component.currentCharacterObserver.subscribe(invalidValue => {
                   expect(invalidValue).not.toBe('@');
+                  hostFixture.whenStable().then(() => {
+
+                    // let's scroll to invalid char
+                    component.goToLetterIE('A');
+                    hostFixture.whenRenderingDone().then(() => {
+                      component.currentCharacterObserver.subscribe(ieValue => {
+                        expect(ieValue).toBe('A');
+                      });
+                    });
+                  });
                 });
               });
             });
           });
         });
       });
+    });
+  });
+
+  it('should call resize', () => {
+    hostFixture.detectChanges();
+    hostFixture.whenStable().then(() => {
+      component.onresize();
     });
   });
 
