@@ -38,7 +38,68 @@ export class UseAngularCdkComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.DATA = DATA.sort((a, b) => a.first_name < b.first_name ? -1 : (a.first_name > b.first_name ? 1 : 0));
+    this.DATA = [
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' },
+      { 'first_name': 'AAA' }
+    ];
   }
 
   ngAfterViewInit() {
@@ -47,6 +108,51 @@ export class UseAngularCdkComponent implements OnInit, AfterViewInit {
 
   detectChanges(character: string) {
     this.currentCharacter = character;
+    this._changeDetectorRef.detectChanges();
+  }
+
+  appendData() {
+    this.DATA = this.DATA.concat([
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' },
+      { 'first_name': 'BBB' }
+    ]);
+    // console.log(this.DATA);
     this._changeDetectorRef.detectChanges();
   }
 }

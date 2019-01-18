@@ -54,12 +54,12 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
   @ViewChild('indicator') indicator: ElementRef;
   /**Indicator Container Parent */
   @ViewChild('indicatorContainerParent') indicatorContainerParent: ElementRef;
+  /**Indicator Box */
+  @ViewChild('indicatorBox') indicatorBox: ElementRef;
 
   // Properties
   /**This will contain all subscriptions, so that it will be easy to unsubscribe at once. */
   private _subs$: (Subscription | Subject<any>)[] = [];
-  /**EShowWhen interface variable, for internal use only */
-  private _eShowWhen = EShowWhen;
   /**scrollTop of view port */
   viewScrollTop: number;
   /**scrollHeight of view port */
@@ -101,14 +101,14 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
   ngAfterViewInit() {
     this._changeDetectorRef.detach();
     this.scrollableElementRef = this.scrollable.getElementRef();
-    this.viewScrollHeight = this.scrollableElementRef.nativeElement.scrollHeight;
-    this.calculateThumbHeight();
     this.beginScrollRegistration();
   }
 
   private beginScrollRegistration() {
+    this._scrollDispatcher.register(this.scrollable);
     if (this.options.enable) {
       if (this._supportsScrollBehavior) {
+        this.calculateThumbHeight();
         this.registerScroll();
       } else {
         console.warn(`Your current platform does not support scroll behavior or passive event listeners.
@@ -122,11 +122,8 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
 
   private registerScroll() {
     let timer = null;
-    this._scrollDispatcher.register(this.scrollable);
-    const scrollSub$ = this._scrollDispatcher.scrolled().subscribe((cdks: CdkScrollable) => {
-      this.viewScrollTop = cdks.measureScrollOffset('top');
-      const percentTop = (this.viewScrollTop * 100) / this.viewScrollHeight;
-      this._renderer.setStyle(this.indicator.nativeElement, 'top', (Math.round(percentTop * 100) / 100) + '%');
+    const scrollSub$ = this._scrollDispatcher.scrolled().subscribe(() => {
+      this.setIndicatorPosition();
       timer = this.showIndicator(timer);
       this.updateCharacter();
     });
@@ -134,12 +131,22 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
   }
 
   private registerScrollChar() {
-    this._scrollDispatcher.register(this.scrollable);
-    const scrollSub$ = this._scrollDispatcher.scrolled().subscribe((cdks: CdkScrollable) => {
-      this.viewScrollTop = cdks.measureScrollOffset('top');
+    const scrollSub$ = this._scrollDispatcher.scrolled().subscribe(() => {
+      this.viewScrollTop = this.scrollable.measureScrollOffset('top');
       this.updateCharacter();
     });
     this._subs$.push(scrollSub$);
+  }
+
+  private setIndicatorPosition() {
+    this.viewScrollTop = this.scrollable.measureScrollOffset('top');
+    const percentTop = (this.viewScrollTop * 100) / this.viewScrollHeight;
+    this._renderer.setStyle(this.indicatorBox.nativeElement, 'top', (Math.round(percentTop * 100) / 100) + '%');
+
+    // const containerCenter = this.options.containerHeight / 2;
+    // const indicatorBoxCenter = this.indicatorBox.nativeElement.offsetHeight / 2;
+    // const centerCalculationBox = this.options.containerHeight - this.indicatorBox.nativeElement.offsetHeight;
+    this._renderer.setStyle(this.indicator.nativeElement, 'top', (Math.round(percentTop * 100) / 100) + '%');
   }
 
   /**If user has not provided any options, take default ones. */
@@ -176,6 +183,7 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
 
   /**Calculate scrollbar thumb height */
   private calculateThumbHeight() {
+    this.viewScrollHeight = this.scrollableElementRef.nativeElement.scrollHeight;
     let arrowHeight: number;
     if (this._platform.EDGE) {
       arrowHeight = this._arrowSizes.edge;
@@ -188,11 +196,13 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
     }
     const contentHeight = this.options.containerHeight;
 
-    const viewableRatio = this.viewScrollHeight / contentHeight;
+    const viewableRatio = Math.round(this.viewScrollHeight / contentHeight * 100) / 100;
 
-    const scrollBarArea = this.viewScrollHeight - arrowHeight * 2;
+    const scrollBarArea = Math.round((contentHeight - arrowHeight * 2) * 100) / 100;
 
-    this.thumbHeight = scrollBarArea * viewableRatio;
+    this.thumbHeight = Math.round(scrollBarArea / viewableRatio * 100) / 100;
+    this._renderer.setStyle(this.indicatorBox.nativeElement, 'height', this.thumbHeight + 'px');
+
     this._renderer.setStyle(this.indicatorContainerParent.nativeElement, 'top', arrowHeight + 'px');
     this._renderer.setStyle(this.indicatorContainerParent.nativeElement, 'bottom', arrowHeight + 'px');
   }
@@ -201,6 +211,10 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
     this.startCalculation();
     const itemChanges$ = this._items.changes.subscribe(_ => {
       this.startCalculation();
+      this.setIndicatorPosition();
+      this._scrollDispatcher.deregister(this.scrollable);
+      this.beginScrollRegistration();
+      this._changeDetectorRef.detectChanges();
     });
     this._subs$.push(itemChanges$);
   }
@@ -209,7 +223,6 @@ export class NgxScrollbarIndicatorCdkComponent implements OnInit, AfterViewInit,
     this._subs$.forEach(sub$ => {
       sub$.unsubscribe();
     });
-    this._scrollDispatcher.deregister(this.scrollable);
   }
 
   /**Process number of children and generate firsts and lasts objects */
