@@ -12,21 +12,21 @@ import {
   AfterContentInit,
   OnDestroy,
   ChangeDetectorRef
-} from "@angular/core";
+} from '@angular/core';
 import {
   ScrollbarIndicatorOptions,
   EShowWhen,
   ETheme
-} from "../interface/scrollbar-indicator-options";
-import { CdkScrollable, ScrollDispatcher } from "@angular/cdk/scrolling";
-import { ScrollbarIndicatorItemDirective } from "../directive/scrollbar-indicator-item.directive";
-import { Subject, Subscription } from "rxjs";
-import { Platform, supportsScrollBehavior } from "@angular/cdk/platform";
+} from '../interface/scrollbar-indicator-options';
+import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
+import { ScrollbarIndicatorItemDirective } from '../directive/scrollbar-indicator-item.directive';
+import { Subject, Subscription } from 'rxjs';
+import { Platform, supportsScrollBehavior } from '@angular/cdk/platform';
 
 @Component({
-  selector: "ngx-scrollbar-indicator",
-  templateUrl: "./ngx-scrollbar-indicator.component.html",
-  styleUrls: ["./ngx-scrollbar-indicator.component.scss"],
+  selector: 'ngx-scrollbar-indicator',
+  templateUrl: './ngx-scrollbar-indicator.component.html',
+  styleUrls: ['./ngx-scrollbar-indicator.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxScrollbarIndicatorComponent
@@ -50,11 +50,11 @@ export class NgxScrollbarIndicatorComponent
   /**Scrollable view port */
   @ViewChild(CdkScrollable) scrollable: CdkScrollable;
   /**Indicator */
-  @ViewChild("indicator") indicator: ElementRef;
+  @ViewChild('indicator') indicator: ElementRef;
   /**Indicator Container Parent */
-  @ViewChild("indicatorContainerParent") indicatorContainerParent: ElementRef;
+  @ViewChild('indicatorContainerParent') indicatorContainerParent: ElementRef;
   /**Indicator Box */
-  @ViewChild("indicatorBox") indicatorBox: ElementRef;
+  @ViewChild('indicatorBox') indicatorBox: ElementRef;
 
   // Properties
   /**This will contain all subscriptions, so that it will be easy to unsubscribe at once. */
@@ -131,19 +131,19 @@ export class NgxScrollbarIndicatorComponent
 
   private registerScrollChar() {
     const scrollSub$ = this._scrollDispatcher.scrolled().subscribe(() => {
-      this.viewScrollTop = this.scrollable.measureScrollOffset("top");
+      this.viewScrollTop = this.scrollable.measureScrollOffset('top');
       this.updateCharacter();
     });
     this._subs$.push(scrollSub$);
   }
 
   private setIndicatorPosition() {
-    this.viewScrollTop = this.scrollable.measureScrollOffset("top");
+    this.viewScrollTop = this.scrollable.measureScrollOffset('top');
     const percentTop = (this.viewScrollTop * 100) / this.viewScrollHeight;
     this._renderer.setStyle(
       this.indicatorBox.nativeElement,
-      "top",
-      Math.round(percentTop * 100) / 100 + "%"
+      'top',
+      Math.round(percentTop * 100) / 100 + '%'
     );
 
     // const containerCenter = this.options.containerHeight / 2;
@@ -151,8 +151,8 @@ export class NgxScrollbarIndicatorComponent
     // const centerCalculationBox = this.options.containerHeight - this.indicatorBox.nativeElement.offsetHeight;
     this._renderer.setStyle(
       this.indicator.nativeElement,
-      "top",
-      Math.round(percentTop * 100) / 100 + "%"
+      'top',
+      Math.round(percentTop * 100) / 100 + '%'
     );
   }
 
@@ -220,19 +220,19 @@ export class NgxScrollbarIndicatorComponent
     this.thumbHeight = Math.round((scrollBarArea / viewableRatio) * 100) / 100;
     this._renderer.setStyle(
       this.indicatorBox.nativeElement,
-      "height",
-      this.thumbHeight + "px"
+      'height',
+      this.thumbHeight + 'px'
     );
 
     this._renderer.setStyle(
       this.indicatorContainerParent.nativeElement,
-      "top",
-      arrowHeight + "px"
+      'top',
+      arrowHeight + 'px'
     );
     this._renderer.setStyle(
       this.indicatorContainerParent.nativeElement,
-      "bottom",
-      arrowHeight + "px"
+      'bottom',
+      arrowHeight + 'px'
     );
   }
 
@@ -278,11 +278,11 @@ export class NgxScrollbarIndicatorComponent
    */
   showIndicator(timer: any, duration = 500) {
     if (timer !== null) {
-      this.indicator.nativeElement.classList.add("show");
+      this.indicator.nativeElement.classList.add('show');
       clearTimeout(timer);
     }
     timer = setTimeout(() => {
-      this.indicator.nativeElement.classList.remove("show");
+      this.indicator.nativeElement.classList.remove('show');
     }, duration);
     return timer;
   }
@@ -292,15 +292,15 @@ export class NgxScrollbarIndicatorComponent
    * @param letter Character to which viewport should be scrolled
    * @param position Element of that character group, first or last
    */
-  goToLetter(letter: string, position = "first"): number {
+  goToLetter(letter: string, position = 'first'): number {
     try {
-      const offsetTop = this[position + "s"][letter.toUpperCase()].offsetTop;
+      const offsetTop = this[position + 's'][letter.toUpperCase()].offsetTop;
       // smooth behavior will work in firefox and chrome, but not in IE and Edge.
-      this.scrollable.scrollTo({ top: offsetTop, behavior: "smooth" });
+      this.scrollable.scrollTo({ top: offsetTop, behavior: 'smooth' });
       return offsetTop;
     } catch (e) {
       console.error(
-        "The letter you tried to scroll to, could not be found in list. Full error log can be found below:\n",
+        'The letter you tried to scroll to, could not be found in list. Full error log can be found below:\n',
         e
       );
       return -1;

@@ -34,9 +34,9 @@ export interface ScrollbarIndicatorOptions {
  */
 export enum EChangeWhen {
   // The element has reached top of view
-  top = "TOP",
+  top = 'TOP',
   // The element is visible in view
-  visible = "VISIBLE"
+  visible = 'VISIBLE'
 }
 
 /**
@@ -44,18 +44,18 @@ export enum EChangeWhen {
  */
 export enum EShowWhen {
   /**Show always */
-  always = "ALWAYS",
+  always = 'ALWAYS',
   /**Show when scrolled or hovered */
-  scroll = "SCROLL"
+  scroll = 'SCROLL'
 }
 
 /**
  *Enum for 'theme' values of indicator
  */
 export enum ETheme {
-  circular = "circular",
-  waterDrop = "water-drop",
-  squareLike = "square-like"
+  circular = 'circular',
+  waterDrop = 'water-drop',
+  squareLike = 'square-like'
 }
 
 /**
@@ -64,7 +64,7 @@ export enum ETheme {
  */
 export enum EPosition {
   /**Change the position with scroll */
-  auto = "AUTO",
+  auto = 'AUTO',
   /**Keep it on top */
-  top = "TOP"
+  top = 'TOP'
 }

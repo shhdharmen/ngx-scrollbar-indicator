@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   EChangeWhen,
   EPosition,
@@ -6,16 +6,16 @@ import {
   ETheme,
   ScrollbarIndicatorOptions,
   NgxScrollbarIndicatorComponent
-} from "projects/ngx-scrollbar-indicator/src/public_api";
-import { DATA } from "projects/ngx-scrollbar-indicator/src/lib/MOCK_DATA";
+} from 'projects/ngx-scrollbar-indicator/src/public_api';
+import { DATA } from 'projects/ngx-scrollbar-indicator/src/lib/MOCK_DATA';
 
 @Component({
-  selector: "app-bootstrap-core",
-  templateUrl: "./core.component.html",
-  styleUrls: ["./core.component.scss"]
+  selector: 'app-bootstrap-core',
+  templateUrl: './core.component.html',
+  styleUrls: ['./core.component.scss']
 })
 export class CoreComponent implements OnInit {
-  @ViewChild("indicatorRef") indicatorRef: NgxScrollbarIndicatorComponent;
+  @ViewChild('indicatorRef') indicatorRef: NgxScrollbarIndicatorComponent;
 
   stringify = JSON.stringify;
   eChangeWhen = EChangeWhen;

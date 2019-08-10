@@ -1,26 +1,26 @@
-import { TestBed, async, ComponentFixture } from "@angular/core/testing";
-import { ScrollbarIndicatorItemDirective } from "../directive/scrollbar-indicator-item.directive";
-import { Component, ViewChild, DebugElement } from "@angular/core";
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { ScrollbarIndicatorItemDirective } from '../directive/scrollbar-indicator-item.directive';
+import { Component, ViewChild, DebugElement } from '@angular/core';
 import {
   ScrollbarIndicatorOptions,
   EChangeWhen,
   ETheme,
   EPosition,
   EShowWhen
-} from "../interface/scrollbar-indicator-options";
-import { DATA as MOCK_DATA } from "../MOCK_DATA";
-import { By } from "@angular/platform-browser";
-import { NgxScrollbarIndicatorComponent } from "./ngx-scrollbar-indicator.component";
-import { ScrollingModule } from "@angular/cdk/scrolling";
+} from '../interface/scrollbar-indicator-options';
+import { DATA as MOCK_DATA } from '../MOCK_DATA';
+import { By } from '@angular/platform-browser';
+import { NgxScrollbarIndicatorComponent } from './ngx-scrollbar-indicator.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @Component({
   template: `
     <ngx-scrollbar-indicator-cdk
       #indicatorRef
-      [options]="options"
-      class="container"
+      [options]='options'
+      class='container'
     >
-      <div *ngFor="let item of DATA" [indicatorItem]="item.first_name">
+      <div *ngFor='let item of DATA' [indicatorItem]='item.first_name'>
         {{ item.first_name }}
       </div>
     </ngx-scrollbar-indicator-cdk>
@@ -28,11 +28,11 @@ import { ScrollingModule } from "@angular/cdk/scrolling";
 })
 class TestNgxScrollbarIndicatorCdkComponent {
   options: ScrollbarIndicatorOptions = null;
-  @ViewChild("indicatorRef") indicatorRef: NgxScrollbarIndicatorComponent;
-  DATA = [{ first_name: "Hello" }];
+  @ViewChild('indicatorRef') indicatorRef: NgxScrollbarIndicatorComponent;
+  DATA = [{ first_name: 'Hello' }];
 }
 
-describe("NgxScrollbarIndicatorCdkComponent", () => {
+describe('NgxScrollbarIndicatorCdkComponent', () => {
   const defaultOptions = {
     enable: true,
     changeWhen: EChangeWhen.top,
@@ -72,20 +72,20 @@ describe("NgxScrollbarIndicatorCdkComponent", () => {
       TestNgxScrollbarIndicatorCdkComponent
     );
     hostComponent = hostFixture.debugElement.componentInstance;
-    debugEl = hostFixture.debugElement.query(By.css(".container"));
+    debugEl = hostFixture.debugElement.query(By.css('.container'));
 
     component = hostComponent.indicatorRef;
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it("should not have data", () => {
+  it('should not have data', () => {
     expect(component.all.length).toBe(0);
   });
 
-  it("should set data", () => {
+  it('should set data', () => {
     expect(component.all.length).not.toBe(hostComponent.DATA.length);
     hostFixture.detectChanges();
     hostFixture.whenStable().then(() => {
@@ -93,11 +93,11 @@ describe("NgxScrollbarIndicatorCdkComponent", () => {
     });
   });
 
-  it("options should be undefined", () => {
+  it('options should be undefined', () => {
     expect(JSON.stringify(component.options)).toBeUndefined();
   });
 
-  it("assign blank options, it should take default options", () => {
+  it('assign blank options, it should take default options', () => {
     hostComponent.options = {};
     hostFixture.detectChanges();
     expect(JSON.stringify(component.options)).toBe(
@@ -105,7 +105,7 @@ describe("NgxScrollbarIndicatorCdkComponent", () => {
     );
   });
 
-  it("assign set of options, it should take the same options", () => {
+  it('assign set of options, it should take the same options', () => {
     hostComponent.options = Object.assign({}, initialOptions);
     hostFixture.detectChanges();
     expect(JSON.stringify(component.options)).toBe(
@@ -113,21 +113,21 @@ describe("NgxScrollbarIndicatorCdkComponent", () => {
     );
   });
 
-  it("change enable to false", () => {
+  it('change enable to false', () => {
     const options = Object.assign(defaultOptions, { enable: false });
     hostComponent.options = options;
     hostFixture.detectChanges();
     expect(JSON.stringify(component.options)).toBe(JSON.stringify(options));
   });
 
-  it("change position of indicator to top", () => {
+  it('change position of indicator to top', () => {
     const options = Object.assign(defaultOptions, { position: EPosition.top });
     hostComponent.options = options;
     hostFixture.detectChanges();
     expect(JSON.stringify(component.options)).toBe(JSON.stringify(options));
   });
 
-  it("change changeWhen to visible", () => {
+  it('change changeWhen to visible', () => {
     const options = Object.assign(defaultOptions, {
       changeWhen: EChangeWhen.visible
     });
@@ -136,7 +136,7 @@ describe("NgxScrollbarIndicatorCdkComponent", () => {
     expect(JSON.stringify(component.options)).toBe(JSON.stringify(options));
   });
 
-  it("change showWhen to always", () => {
+  it('change showWhen to always', () => {
     const options = Object.assign(defaultOptions, {
       showWhen: EShowWhen.always
     });
@@ -145,7 +145,7 @@ describe("NgxScrollbarIndicatorCdkComponent", () => {
     expect(JSON.stringify(component.options)).toBe(JSON.stringify(options));
   });
 
-  it("should scroll to a valid character", () => {
+  it('should scroll to a valid character', () => {
     // let's add some data
     hostComponent.DATA = MOCK_DATA;
     hostFixture.detectChanges();
@@ -157,11 +157,11 @@ describe("NgxScrollbarIndicatorCdkComponent", () => {
         expect(component.all.length).toBe(MOCK_DATA.length);
 
         // let's scroll
-        component.goToLetter("A", "last");
+        component.goToLetter('A', 'last');
         hostFixture.whenRenderingDone().then(() => {
           // let's scroll to invalid char
-          component.goToLetter("@", "last");
-          hostFixture.whenRenderingDone().then(() => {});
+          component.goToLetter('@', 'last');
+          hostFixture.whenRenderingDone().then(() => { });
         });
       });
     });

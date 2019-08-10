@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BasicComponent } from "./basic.component";
+import { BasicComponent } from './basic.component';
 
-describe("UseAngularCdkComponent", () => {
+describe('UseAngularCdkComponent', () => {
   let component: BasicComponent;
   let fixture: ComponentFixture<BasicComponent>;
 
@@ -18,7 +18,7 @@ describe("UseAngularCdkComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
