@@ -3,9 +3,7 @@ import { ScrollbarIndicatorItemDirective } from '../directive/scrollbar-indicato
 import { Component, ViewChild, DebugElement } from '@angular/core';
 import {
   ScrollbarIndicatorOptions,
-  EChangeWhen,
   ETheme,
-  EPosition,
   EShowWhen
 } from '../interface/scrollbar-indicator-options';
 import { DATA as MOCK_DATA } from '../MOCK_DATA';
@@ -15,7 +13,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @Component({
   template: `
-    <ngx-scrollbar-indicator-cdk
+    <ngx-scrollbar-indicator
       #indicatorRef
       [options]='options'
       class='container'
@@ -23,36 +21,32 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
       <div *ngFor='let item of DATA' [indicatorItem]='item.first_name'>
         {{ item.first_name }}
       </div>
-    </ngx-scrollbar-indicator-cdk>
+    </ngx-scrollbar-indicator>
   `
 })
-class TestNgxScrollbarIndicatorCdkComponent {
+class TestNgxScrollbarIndicatorComponent {
   options: ScrollbarIndicatorOptions = null;
   @ViewChild('indicatorRef') indicatorRef: NgxScrollbarIndicatorComponent;
   DATA = [{ first_name: 'Hello' }];
 }
 
-describe('NgxScrollbarIndicatorCdkComponent', () => {
-  const defaultOptions = {
+describe('NgxScrollbarIndicatorComponent', () => {
+  const defaultOptions: ScrollbarIndicatorOptions = {
     enable: true,
-    changeWhen: EChangeWhen.top,
     containerHeight: 500,
-    position: EPosition.auto,
     showWhen: EShowWhen.scroll,
     theme: ETheme.waterDrop
   };
-  const initialOptions = {
+  const initialOptions: ScrollbarIndicatorOptions = {
     enable: true,
-    changeWhen: EChangeWhen.top,
-    containerHeight: 350,
-    theme: ETheme.waterDrop,
-    position: EPosition.auto,
-    showWhen: EShowWhen.scroll
+    containerHeight: 500,
+    showWhen: EShowWhen.scroll,
+    theme: ETheme.waterDrop
   };
   let component: NgxScrollbarIndicatorComponent;
 
-  let hostComponent: TestNgxScrollbarIndicatorCdkComponent;
-  let hostFixture: ComponentFixture<TestNgxScrollbarIndicatorCdkComponent>;
+  let hostComponent: TestNgxScrollbarIndicatorComponent;
+  let hostFixture: ComponentFixture<TestNgxScrollbarIndicatorComponent>;
 
   let debugEl: DebugElement;
 
@@ -62,14 +56,14 @@ describe('NgxScrollbarIndicatorCdkComponent', () => {
       declarations: [
         NgxScrollbarIndicatorComponent,
         ScrollbarIndicatorItemDirective,
-        TestNgxScrollbarIndicatorCdkComponent
+        TestNgxScrollbarIndicatorComponent
       ]
     }).compileComponents();
   }));
 
   beforeEach(() => {
     hostFixture = TestBed.createComponent(
-      TestNgxScrollbarIndicatorCdkComponent
+      TestNgxScrollbarIndicatorComponent
     );
     hostComponent = hostFixture.debugElement.componentInstance;
     debugEl = hostFixture.debugElement.query(By.css('.container'));
@@ -115,22 +109,6 @@ describe('NgxScrollbarIndicatorCdkComponent', () => {
 
   it('change enable to false', () => {
     const options = Object.assign(defaultOptions, { enable: false });
-    hostComponent.options = options;
-    hostFixture.detectChanges();
-    expect(JSON.stringify(component.options)).toBe(JSON.stringify(options));
-  });
-
-  it('change position of indicator to top', () => {
-    const options = Object.assign(defaultOptions, { position: EPosition.top });
-    hostComponent.options = options;
-    hostFixture.detectChanges();
-    expect(JSON.stringify(component.options)).toBe(JSON.stringify(options));
-  });
-
-  it('change changeWhen to visible', () => {
-    const options = Object.assign(defaultOptions, {
-      changeWhen: EChangeWhen.visible
-    });
     hostComponent.options = options;
     hostFixture.detectChanges();
     expect(JSON.stringify(component.options)).toBe(JSON.stringify(options));
