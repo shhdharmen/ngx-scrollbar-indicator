@@ -1,6 +1,6 @@
 {
   "name": "ngx-scrollbar-indicator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This is an Angular Library. This will show an indicator with scrollbar. Read more in README.",
   "keywords": ["angular", "library", "scrollbar", "indicator", "list", "for", "loop"],
   "license": "MIT",
@@ -11,6 +11,8 @@
   "homepage": "https://shhdharmen.github.io/ngx-scrollbar-indicator",
   "peerDependencies": {
     "@angular/common": ">=7.0.0 <8.0.0",
-    "@angular/core": ">=7.0.0 <8.0.0"
+    "@angular/core": ">=7.0.0 <8.0.0",
+    "@angular/cdk": ">=7.0.0 <8.0.0",
+    "rxjs": ">=6.0.0"
   }
 }

@@ -1,18 +1,28 @@
 <div class="row">
   <div class="col-12 my-3">
-    <p>Bootstrap Core Example Code Available at : <a href="https://github.com/shhdharmen/ngx-scrollbar-indicator/tree/master/src/app/bootstrap/core"
-        target="_blank">Git</a></p>
+    <p>
+      Bootstrap Core Example Code Available at :
+      <a
+        href="https://github.com/shhdharmen/ngx-scrollbar-indicator/tree/master/src/app/bootstrap/core"
+        target="_blank"
+        >Git</a
+      >
+    </p>
   </div>
   <div class="col-12 my-3">
     <p id="bootstrapCurrentOptions">Current Options</p>
-    <code class="p-3 border rounded bg-light d-block">{{stringify(options)}}</code>
+    <code class="p-3 border rounded bg-light d-block">{{
+      stringify(options)
+    }}</code>
   </div>
 </div>
 <div class="row">
   <div class="col-12 mb-3">
     <div class="card shadow rounded p-3">
       <ngx-scrollbar-indicator #indicatorRef [options]="options">
-        <div *ngFor="let item of DATA" [indicatorItem]="item.first_name">{{item.first_name}}</div>
+        <div *ngFor="let item of DATA" [indicatorItem]="item.first_name">
+          {{ item.first_name }}
+        </div>
       </ngx-scrollbar-indicator>
     </div>
   </div>
@@ -26,37 +36,42 @@
             <label class="font-weight-bold">Functions</label>
           </div>
           <div class="col-12 mb-3">
-            <label>Non-IE Browsers : Go To Letter&nbsp;</label>
+            <label>Go To Letter&nbsp;</label>
             <div class="btn-group" role="group" aria-label="Go To Letter">
-              <button type="button" class="btn btn-secondary" (click)="indicatorRef.goToLetter('a')">Go to 'A'</button>
-              <button type="button" class="btn btn-secondary" (click)="indicatorRef.goToLetter('a', 'last')">Go to
-                'A' : last</button>
-            </div>
-          </div>
-          <div class="col-12 mb-3">
-            <label>IE Browsers : Go To Letter&nbsp;</label>
-            <div class="btn-group" role="group" aria-label="Go To Letter">
-              <button type="button" class="btn btn-secondary" (click)="indicatorRef.goToLetterIE('a')">Go to 'A'</button>
-              <button type="button" class="btn btn-secondary" (click)="indicatorRef.goToLetterIE('a', 'last')">Go to
-                'A' : last</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="indicatorRef.goToLetter('a')"
+              >
+                Go to 'A'
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="indicatorRef.goToLetter('a', 'last')"
+              >
+                Go to 'A' : last
+              </button>
             </div>
           </div>
           <div class="col-12 mb-3">
             <label>Show Indicator&nbsp;</label>
             <div class="btn-group" role="group" aria-label="Show Indicator">
-              <button type="button" class="btn btn-secondary" (click)="showIndicator()">Show Indicator</button>
-              <button type="button" class="btn btn-secondary" (click)="showIndicator(3000)">Show Indicator for 3
-                Seconds</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="showIndicator()"
+              >
+                Show Indicator
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="showIndicator(3000)"
+              >
+                Show Indicator for 3 Seconds
+              </button>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label class="font-weight-bold">Observer</label>
-          </div>
-          <div class="col-auto">
-            <label>Current Indicator Character :&nbsp;</label><label class="btn btn-info">{{indicatorRef.currentCharacterObserver
-              | async}}</label>
           </div>
         </div>
       </div>
@@ -70,58 +85,85 @@
       <div class="col-auto mb-3">
         <label>Themes&nbsp;</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-secondary" [class.active]="options.theme == eTheme.circular">
-            <input type="radio" name="themes" id="theme1" autocomplete="off" [checked]="options.theme == eTheme.circular"
-              [value]="eTheme.circular" [(ngModel)]="options.theme"> circular
+          <label
+            class="btn btn-secondary"
+            [class.active]="options.theme == eTheme.circular"
+          >
+            <input
+              type="radio"
+              name="themes"
+              id="theme1"
+              autocomplete="off"
+              [checked]="options.theme == eTheme.circular"
+              [value]="eTheme.circular"
+              [(ngModel)]="options.theme"
+            />
+            circular
           </label>
-          <label class="btn btn-secondary" [class.active]="options.theme == eTheme.squareLike">
-            <input type="radio" name="themes" id="theme2" autocomplete="off" [checked]="options.theme == eTheme.squareLike"
-              [value]="eTheme.squareLike" [(ngModel)]="options.theme"> squareLike
+          <label
+            class="btn btn-secondary"
+            [class.active]="options.theme == eTheme.squareLike"
+          >
+            <input
+              type="radio"
+              name="themes"
+              id="theme2"
+              autocomplete="off"
+              [checked]="options.theme == eTheme.squareLike"
+              [value]="eTheme.squareLike"
+              [(ngModel)]="options.theme"
+            />
+            squareLike
           </label>
-          <label class="btn btn-secondary" [class.active]="options.theme == eTheme.waterDrop">
-            <input type="radio" name="themes" id="theme3" autocomplete="off" [checked]="options.theme == eTheme.waterDrop"
-              [value]="eTheme.waterDrop" [(ngModel)]="options.theme"> waterDrop
-          </label>
-        </div>
-      </div>
-      <div class="col-auto mb-3">
-        <label>Indicator Position&nbsp;</label>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-secondary" [class.active]="options.position == ePosition.top">
-            <input type="radio" name="positions" id="position1" autocomplete="off" [checked]="options.position == ePosition.top"
-              [value]="ePosition.top" [(ngModel)]="options.position"> Top
-          </label>
-          <label class="btn btn-secondary" [class.active]="options.position == ePosition.auto">
-            <input type="radio" name="positions" id="position2" autocomplete="off" [checked]="options.position == ePosition.auto"
-              [value]="ePosition.auto" [(ngModel)]="options.position"> Auto
-          </label>
-        </div>
-      </div>
-      <div class="col-auto mb-3">
-        <label>Indicator Change When&nbsp;</label>
-        <small><b>TOP :</b> Means, show character which is on top of view port, <b>VISIBLE :</b> Means, show character
-          which is on bottom of view port.&nbsp;</small>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-secondary" [class.active]="options.changeWhen == eChangeWhen.top">
-            <input type="radio" name="changeWhens" id="changeWhen1" autocomplete="off" [checked]="options.changeWhen == eChangeWhen.top"
-              [value]="eChangeWhen.top" [(ngModel)]="options.changeWhen" (ngModelChange)="changeWhen()"> Top
-          </label>
-          <label class="btn btn-secondary" [class.active]="options.changeWhen == eChangeWhen.visible">
-            <input type="radio" name="changeWhens" id="changeWhen2" autocomplete="off" [checked]="options.changeWhen == eChangeWhen.visible"
-              [value]="eChangeWhen.visible" [(ngModel)]="options.changeWhen" (ngModelChange)="changeWhen()"> Visible
+          <label
+            class="btn btn-secondary"
+            [class.active]="options.theme == eTheme.waterDrop"
+          >
+            <input
+              type="radio"
+              name="themes"
+              id="theme3"
+              autocomplete="off"
+              [checked]="options.theme == eTheme.waterDrop"
+              [value]="eTheme.waterDrop"
+              [(ngModel)]="options.theme"
+            />
+            waterDrop
           </label>
         </div>
       </div>
       <div class="col-auto mb-3">
         <label>Indicator Show When&nbsp;</label>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-secondary" [class.active]="options.showWhen == eShowWhen.always">
-            <input type="radio" name="showWhens" id="showWhen1" autocomplete="off" [checked]="options.showWhen == eShowWhen.always"
-              [value]="eShowWhen.always" [(ngModel)]="options.showWhen"> Always
+          <label
+            class="btn btn-secondary"
+            [class.active]="options.showWhen == eShowWhen.always"
+          >
+            <input
+              type="radio"
+              name="showWhens"
+              id="showWhen1"
+              autocomplete="off"
+              [checked]="options.showWhen == eShowWhen.always"
+              [value]="eShowWhen.always"
+              [(ngModel)]="options.showWhen"
+            />
+            Always
           </label>
-          <label class="btn btn-secondary" [class.active]="options.showWhen == eShowWhen.scroll">
-            <input type="radio" name="showWhens" id="showWhen2" autocomplete="off" [checked]="options.showWhen == eShowWhen.scroll"
-              [value]="eShowWhen.scroll" [(ngModel)]="options.showWhen"> Scroll
+          <label
+            class="btn btn-secondary"
+            [class.active]="options.showWhen == eShowWhen.scroll"
+          >
+            <input
+              type="radio"
+              name="showWhens"
+              id="showWhen2"
+              autocomplete="off"
+              [checked]="options.showWhen == eShowWhen.scroll"
+              [value]="eShowWhen.scroll"
+              [(ngModel)]="options.showWhen"
+            />
+            Scroll
           </label>
         </div>
       </div>

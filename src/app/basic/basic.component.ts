@@ -23,17 +23,20 @@ export class BasicComponent implements OnInit {
   eTheme = ETheme;
   options: ScrollbarIndicatorOptions = {
     enable: true,
-    changeWhen: EChangeWhen.top,
     containerHeight: 350,
     theme: ETheme.waterDrop,
-    position: EPosition.auto,
     showWhen: EShowWhen.scroll
   };
-  DATA: { 'first_name': string }[];
+  DATA: { first_name: string }[];
   timer: any;
+  currentCharacter: string;
+
+  constructor() {}
 
   ngOnInit() {
-    this.DATA = DATA.sort((a, b) => a.first_name < b.first_name ? -1 : (a.first_name > b.first_name ? 1 : 0));
+    this.DATA = DATA.sort((a, b) =>
+      a.first_name < b.first_name ? -1 : a.first_name > b.first_name ? 1 : 0
+    );
   }
 
   showIndicator(duration?: number) {
