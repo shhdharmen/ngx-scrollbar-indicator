@@ -46,7 +46,7 @@
     "@types/jasmine": "^2.8.14",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
-    "codecov": "^3.6.5",
+    "codecov": "^3.7.1",
     "codelyzer": "~4.5.0",
     "coveralls": "^3.0.2",
     "jasmine-core": "~2.99.1",
